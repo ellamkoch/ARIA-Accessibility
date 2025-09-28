@@ -1,4 +1,4 @@
-#ARIA-Accessibility
+# ARIA-Accessibility
 This is the repository for the Building an Accessible Web Page with ARIA assignment with CodeX.
 
 ## About the Project
@@ -37,5 +37,5 @@ For this particular project, I'm reusing the final html, js and css from the for
 Tested using built-in screen reader tools to confirm that ARIA updates were announced correctly. 
 
 ## Live Demo
-View the deployed project here - 
+View the deployed project here - https://ellamkoch.github.io/ARIA-Accessibility/
 
