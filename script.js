@@ -8,6 +8,7 @@ const lastName = document.getElementById("lastName");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const birthDate = document.getElementById("birthDate");
+const favoriteBook = document.getElementById("favoriteBook");
 const interests = document.querySelectorAll(".checkbox_item_input"); // select all checkboxes with this class
 
 //Event Listener
@@ -41,8 +42,8 @@ mainForm.addEventListener("submit", function (e) {
     outputDiv.innerHTML = `
         <p>My first name is: ${firstName.value} and my last name is: ${lastName.value}</p>
         <p>My email is: ${email.value}</p>
-        <p>My password is: ${password.value}</p> 
         <p>My birth date is: ${birthDate.value}</p>
+        <p>My favorite book is: ${favoriteBook.value}</p>
         <p>My interests are: ${interestsText}</p>
     `;
     // Note: In a real application, I wouldn't display the password like this for security reasons.
@@ -56,7 +57,9 @@ mainForm.addEventListener("submit", function (e) {
     email.value = '';
     password.value = '';
     birthDate.value = '';
+    favoriteBook.value = '';
     interests.forEach((box) => 
         { box.checked = false; }); // unchecks all checkboxes
+    
 
 });

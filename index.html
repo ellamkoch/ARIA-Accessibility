@@ -7,8 +7,11 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="./styles.css">
+    
 </head>
 <body>
+    <nav role="navigation">
+    </nav>
     <main>
     <h1>Book Club Registration Form</h1>
     <h2>Sign up for your book club account today!</h2>
@@ -18,13 +21,13 @@
             <!--First Name-->
             <div class="main_form_field">
                 <label for="firstName" class="main_form_field_label">First Name:</label>
-                <input type="text" id="firstName" class="main_form_field_input" required>
+                <input type="text" id="firstName" name="firstName" class="main_form_field_input" required>
             </div>
         
             <!--Last Name-->
             <div class="main_form_field">
                 <label for="lastName" class="main_form_field_label">Last Name:</label>
-                <input type="text" id="lastName" class="main_form_field_input" required>
+                <input type="text" id="lastName" name="lastName" class="main_form_field_input" required>
             </div>
         </div>
 
@@ -33,58 +36,73 @@
             <div class="main_form_field">
             <!--Email-->
                 <label for="email" class="main_form_field_label">Email:</label>
-                <input type="email" id="email" class="main_form_field_input" required>
+                <input type="email" id="email" name="email" class="main_form_field_input" required>
             </div>
             <!--Password-->
             <div class="main_form_field">
                 <label for="password" class="main_form_field_label">Password:</label>
-                <input type="password" id="password" class="main_form_field_input" required minlength="6">
-                <b>Passwords must be at least 6 characters.</b>
+                <input type="password" id="password" name="password" class="main_form_field_input" required minlength="6" aria-describedby="passwordHelp">
+                <b id="passwordHelp">Passwords must be at least 6 characters.</b>
             </div>
         </div>
 
-        <!--Birth Date-->  
-        <div class="main_form_field">
-            <label for="birthDate" class="main_form_field_label">Birth Date:</label>
-            <input type="date" id="birthDate" class="main_form_field_input"  required>
+        <!--Birth Date & Favorite Book -->  
+        <div class="main_form_row">
+            <div class="main_form_field">
+                <label for="birthDate" class="main_form_field_label">Birth Date:</label>
+                <input type="date" id="birthDate" name="birthDate" class="main_form_field_input" required> 
+                </div>
+            <div class="main_form_field">
+                <label for="favoriteBook" class="main_form_field_label">Favorite Book:</label>
+                <input type="text" id="favoriteBook" name="favoriteBook" class="main_form_field_input" required>
+                
+            </div>
         </div>
 
-        <div class="main_form_row interests">
+        <fieldset class="main_form_row interests" aria-describedby="interestHelp"> <!-- Fieldset tells screen readers that these checkboxes go together with the legend-->
         <!--Interests-->
-        <div class="main_form_field">
-        <label for="interests">Select Your Interests for Reading:</label>
-        <em>Check all that you like or are interested in.</em>
-        </div>
-        <div class="checkbox_group">
-        <input type="checkbox" id="interest-scifi" class="checkbox_item_input" value="scifi">
-        <label for="interest-scifi" class="checkbox_item_label" >Science Fiction</label>
-
-        <input type="checkbox" id="interest-fantasy" class="checkbox_item_input" value="fantasy">
-        <label for="interest-fantasy" class="checkbox_item_label">Fantasy</label>
-
-        <input type="checkbox" id="interest-history" class="checkbox_item_input" value="history">
-        <label for="interest-history" class="checkbox_item_label">History</label>
-
-        <input type="checkbox" id="interest-politics" class="checkbox_item_input"value="politics">
-        <label for="interest-politics" class="checkbox_item_label">Politics</label>
-
-        <input type="checkbox" id="interest-romance" class="checkbox_item_input" value="romance">
-        <label for="interest-romance" class="checkbox_item_label">Romance</label>
+            <legend>Select Your Interests for Reading:</legend> <!-- Legend describes the group of checkboxes-->
+            <em id="interestHelp">Check all that you like or are interested in.</em><!-- The aria-describedby attribute tells screen readers to read the text in the element with the id "interestHelp"-->
+            <div class="main_form_field">
         
-        <input type="checkbox" id="interest-selfHelp" class="checkbox_item_input"value="selfHelp">
-        <label for="interest-selfHelp" class="checkbox_item_label">Self-Help</label>
-        
-        <input type="checkbox" id="interest-biographies" class="checkbox_item_input" value="biographies">
-        <label for="interest-biographies" class="checkbox_item_label">Biographies</label>
-        </div>
-        </div>
+                <div class="checkbox_group">
+                    <input type="checkbox" id="interest-scifi" name="interests[]" class="checkbox_item_input" value="scifi">
+                    <label for="interest-scifi" class="checkbox_item_label" >Science Fiction</label>
 
+                    <input type="checkbox" id="interest-fantasy" name="interests[]" class="checkbox_item_input" value="fantasy">
+                    <label for="interest-fantasy" class="checkbox_item_label">Fantasy</label>
+
+                    <input type="checkbox" id="interest-history" name="interests[]" class="checkbox_item_input" value="history">
+                    <label for="interest-history" class="checkbox_item_label">History</label>
+
+                    <input type="checkbox" id="interest-politics" name="interests[]" class="checkbox_item_input"value="politics">
+                    <label for="interest-politics" class="checkbox_item_label">Politics</label>
+
+                    <input type="checkbox" id="interest-romance" name="interests[]" class="checkbox_item_input" value="romance">
+                    <label for="interest-romance" class="checkbox_item_label">Romance</label>
+                    
+                    <input type="checkbox" id="interest-selfHelp" name="interests[]" class="checkbox_item_input"value="selfHelp">
+                    <label for="interest-selfHelp" class="checkbox_item_label">Self-Help</label>
+                    
+                    <input type="checkbox" id="interest-biographies" name="interests[]" class="checkbox_item_input" value="biographies">
+                    <label for="interest-biographies" class="checkbox_item_label">Biographies</label>
+                </div>
+            </div>
+        </fieldset>
+        <!--Submit Button-->
         <button class="main_form_submit" type="submit">Submit</button>
+        <!-- The aria-label "Submit registration form", tells screen readers what this button does. -->
     </form>
     
-        <div id="output">
-
+        <div id="output" aria-live="polite" role="status" aria-atomic="true"> <!-- aria-live="polite" tells screen readers to announce updates to this area when they occur, but to wait until the user is idle. -->
+            <!-- added role status and aria-atomic true so updates are announced as a whole message.-->
         </div>
+
+    <div>
+    <p>Accessible Rich Internet Applications, otherwise known as ARIA, is a set of attributes that improve the accessibility of web content for users with disabilities. It provides additional information to assistive technologies, such as screen readers, allowing them to better interpret and interact with web elements. By using ARIA roles, states, and properties, developers create more inclusive web experiences, ensuring that users can navigate and understand the content. Implementing ARIA correctly helps span the gap between complex web apps and the diverse needs of users, promoting equal access to information and functionality on the web.
+    </p>
+    <p>For more information about ARIA, follow this <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes" role="button">link.</a></p>
+</div> <!-- The role="button" attribute tells screene readers to treat this link as a button, indicating that it performs an action when activated. -->
     </main>
     <!--JavaScript -->
 
